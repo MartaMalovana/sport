@@ -29,8 +29,12 @@ const sport = [
 ];
 
 function getUser () {
+    // Follow the form submit
     const form = document.querySelector('form');
     form.addEventListener('submit', getInfo);
+    //Follow the cancel-button
+    const cancel = document.querySelector('.cancel');
+    cancel.addEventListener('click', cancelSession);
 
     function getInfo (e) {
         e.preventDefault();
@@ -67,10 +71,39 @@ function getUser () {
 
         form.style.display = 'none';
         info.style.display = 'flex';
-        a.textContent = seriously ? `${name}, ${age} років (cерйозно ${age}?)` : `${name}, ${age} років.`;
+        a.textContent = seriously ? `${name[0].toUpperCase()}${name.slice(1)}, ${age} років (cерйозно ${age}?)` : `${name}, ${age} років.`;
         b.textContent = countryToShow ? `Ти живеш у столиці  ${countryToShow}` : `Ти живеш у місті  ${inputCity}`;
         c.textContent = champToShow ? `Круто! Хочеш стати  ${champToShow}?` : `${inputSport[0].toUpperCase()}${inputSport.slice(1)} - це круто!` 
     };
+
+    function cancelSession (e) {
+       const arr = document.querySelectorAll('input');
+       let customerInfo = [];
+       let description = null;
+        for(a of arr) {
+            if(a.value === '') {
+                switch (a.name) {
+                    case "name": 
+                        description = "ім'я";
+                        break;
+                    case "year": 
+                        description = "рік народження";
+                        break;
+                    case "city": 
+                        description = "місто проживання";
+                        break;
+                    case "sport": 
+                        description = "улюблений вид спорту";
+                        break;
+                    default: break;
+                }
+                customerInfo.push(description);
+            };
+        };
+        
+        alert(customerInfo.length !== 0 ? `Шкода, що Ви не захотіли ввести свій(оє) ${customerInfo.join(', ')}. До побачення!` : 'До побачення!');
+        form.reset();
+    }
 };
 
 getUser();
