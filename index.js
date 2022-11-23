@@ -59,7 +59,7 @@ function getUser () {
         const inputSport = document.querySelector('[name="sport"]').value;
         let champToShow = null;
         sport.find(({type, champion}) => {
-            if(type === inputSport) {
+            if(type === inputSport.toLowerCase()) {
                 champToShow = champion;
             };
         });
