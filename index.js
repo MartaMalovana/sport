@@ -71,7 +71,7 @@ function getUser () {
 
         form.style.display = 'none';
         info.style.display = 'flex';
-        a.textContent = seriously ? `${name[0].toUpperCase()}${name.slice(1)}, ${age} років (cерйозно ${age}?)` : `${name}, ${age} років.`;
+        a.textContent = seriously ? `${name[0].toUpperCase()}${name.slice(1)}, ${age} р. (cерйозно ${age}?)` : `${name[0].toUpperCase()}${name.slice(1)}, ${age} р.`;
         b.textContent = countryToShow ? `Ти живеш у столиці  ${countryToShow}` : `Ти живеш у місті  ${inputCity}`;
         c.textContent = champToShow ? `Круто! Хочеш стати  ${champToShow}?` : `${inputSport[0].toUpperCase()}${inputSport.slice(1)} - це круто!` 
     };
